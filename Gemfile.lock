@@ -142,6 +142,7 @@ DEPENDENCIES
   jquery-rails
   koala
   mysql2
+  omniauth
   omniauth-facebook
   pg
   rails (= 4.0.0.rc1)
