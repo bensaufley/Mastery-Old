@@ -4,7 +4,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0.rc1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+
+# Using MySQL locally, PosgreSQL on Heroku.
+gem 'mysql2', group: [ :development, :test ]
+gem 'pg', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -32,8 +36,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
+# Social integration
+gem 'omniauth-facebook'
+gem 'koala'
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
