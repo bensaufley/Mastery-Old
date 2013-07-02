@@ -1,5 +1,7 @@
 # Mastery #
-## A web app for tracking time ##
+### A web app for tracking time ###
+
+## Description
 
 The idea here is to track the amount of time spent doing something you want to do – whether it’s reading, or practicing an instrument or language, or developing code, or whatever. It could also conceivably be used to track “bad” habits – watching TV, etc. – in which case perhaps “Mastery” isn't the ideal name.
 
