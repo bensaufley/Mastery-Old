@@ -10,3 +10,21 @@ Additionally, I'd like to include simpler goals, which maybe aren’t the type y
 All of this would be provided in a feed (with the option to make certain things private), with badges awarded for certain milestones (100 hours, 50 times, etc.). These things could be shared to social networks, and viewed within this network by friends and followers. Not a real attempt at creating a social network to rival any others, but the availability for positive reinforcement is always good
 
 This is the aim. I’ve seen apps achieve some of these things, but not all together, and some (not Lift, but others) have no design sensibilities, so hopefully I can bring something on that front.
+
+## Functionality ##
+
+### Phase One ###
+
+- Log in/create your account through Facebook
+- Create a few activities. Activities will be public or private and will be one of two categories:
+  - **Timed:** Activities that track the time spent doing them
+  - **Checked:** Activities that you either did, or didn't do (perhaps sticking to *did* do, with the idea that you can do something multiple times per day)
+- Begin logging those activities, every time you do them
+- Share these activities on Mastery and on Facebook
+
+*** Phase Two ***
+
+- Metrics
+- Badges
+- Comments
+- More complicated tracking

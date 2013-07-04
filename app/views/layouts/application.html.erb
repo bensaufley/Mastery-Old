@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mastery</title>
+  <title>Mastery<%=(' | ' + yield(:title)) if content_for? :title %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</nav>
-<%= yield %>
-
+  <nav id="user_nav">
+    <% if current_user %>
+      Signed in as <strong><%= current_user.name %></strong>
+      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <% else %>
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    <% end %>
+  </nav>
+  <header>
+    <h1>Mastery</h1>
+    <%= content_tag(:h2, yield(:title)) if content_for? :title %>
+    <%= yield(:subhead) if content_for? :subhead %>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+  <footer>
+    Copyright &copy;<%=Time.now.year%>
+  </footer>
 </body>
 </html>

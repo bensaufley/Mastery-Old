@@ -2,8 +2,10 @@ Mastery::Application.routes.draw do
 
   get "sessions/create"
   get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/'), via: [ :get, :post, :put ]
+  match 'auth/failure', to: redirect('/'), via: [ :get, :post ]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [ :get, :delete ]
+  
+  root 'static_pages#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
