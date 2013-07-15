@@ -41,6 +41,7 @@ gem 'devise'
 # Social integration
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'koala'
 
 # Use ActiveModel has_secure_password

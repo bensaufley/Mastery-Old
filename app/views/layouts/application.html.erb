@@ -10,11 +10,13 @@
   <nav id="user_nav">
     <% if user_signed_in? %>
       Signed in as <strong><%= current_user.username %></strong>
-      <%= link_to "Edit profile", edit_user_registration_path %> |
+      <%= link_to "Edit profile", edit_user_registration_path %>
       <%= link_to "Sign Out", destroy_user_session_path, id: "signout", method: :delete %>
     <% else %>
       <%= link_to "Sign Up", new_user_registration_path, id: "signup" %>
       <%= link_to "Sign In", new_user_session_path, id: "signin" %>
+      <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
     <% end %>
   </nav>
   <header>
