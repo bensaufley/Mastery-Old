@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree ./includes
+ */
+
+@import shared
+@import compass/reset
+
+*
+  @include box-sizing(border-box)
+
+html, body
+  width: 100%
+  min-height: 100%
+
+body
+  height: 100%
+  font-family: sans-serif
+  font-weight: 300
+  font-size: 62.5%
+  & > nav, & > main
+    font-size: 1.6em
+    line-height: 1.3em
+  & > footer
+    font-size: 1.2em
+    line-height: 1.7333em
+    text-align: center
+
+// Forms
+
+input, textarea, select
+  font-size: 1em
+  font-family: sans-serif
+  font-weight: 300
+
+label
+  display: block
+  clear: both
+  margin: 0 0 .3em
+  @include clearfix
+  strong, input, textarea, select
+    float: left
+    line-height: 1.3em
+  strong
+    text-align: right
+    width: 30%
+    padding: .3em 10px .3em 0
+  input, textarea, select
+    text-align: left
+    width: 70%
+    padding: .3em 0
+    margin: 0
+    border: 1px solid #444
+  &.radio, &.checkbox
+    strong
+      width: auto
+    input
+      width: 5%
+      margin-left: 25%
+      text-align: center
+    
