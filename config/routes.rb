@@ -1,6 +1,6 @@
 Mastery::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   # get "sessions/create"
   # get 'auth/:provider/callback', to: 'sessions#create'
   # match 'auth/failure', to: redirect('/'), via: [ :get, :post ]

@@ -11,6 +11,7 @@ gem 'mysql2', group: [ :development, :test ]
 gem 'pg', group: :production
 
 # Use SCSS for stylesheets
+gem 'compass-rails', git: "git://github.com/milgner/compass-rails.git", branch: "rails4"
 gem 'sass-rails', '~> 4.0.0.rc1'
 
 # Use Uglifier as compressor for JavaScript assets
