@@ -1,0 +1,3 @@
+<% content_for :title, "#{current_user.username}: Profile" %>
+
+<%= link_to "New Activity", new_user_activity_path(current_user) %>

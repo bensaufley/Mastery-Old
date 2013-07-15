@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  activity_id: 1
+  when: 2013-07-15 18:08:43
+  until: 2013-07-15 18:08:43
+  private: false
+
+two:
+  activity_id: 1
+  when: 2013-07-15 18:08:43
+  until: 2013-07-15 18:08:43
+  private: false

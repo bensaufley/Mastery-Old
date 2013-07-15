@@ -1,11 +1,18 @@
 Mastery::Application.routes.draw do
 
+  get "users/index"
+  get "users/show"
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  resources :users, only: [ :index, :show ] do
+    resources :activities, except: [ :index ] do
+      resources :instances, except: [ :index ]
+    end
+  end
   # get "sessions/create"
   # get 'auth/:provider/callback', to: 'sessions#create'
   # match 'auth/failure', to: redirect('/'), via: [ :get, :post ]
   # match 'signout', to: 'sessions#destroy', as: 'signout', via: [ :get, :delete ]
-  
+
   root 'static_pages#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
