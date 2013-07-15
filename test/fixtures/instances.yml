@@ -2,12 +2,12 @@
 
 one:
   activity_id: 1
-  when: 2013-07-15 18:08:43
-  until: 2013-07-15 18:08:43
+  when: 2013-07-15 18:50:28
+  until: 2013-07-15 18:50:28
   private: false
 
 two:
   activity_id: 1
-  when: 2013-07-15 18:08:43
-  until: 2013-07-15 18:08:43
+  when: 2013-07-15 18:50:28
+  until: 2013-07-15 18:50:28
   private: false

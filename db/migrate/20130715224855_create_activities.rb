@@ -4,7 +4,7 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :user_id
       t.string :name
       t.boolean :private
-      t.string :trackmethod
+      t.string :tracking_type
 
       t.timestamps
     end

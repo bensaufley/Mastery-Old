@@ -1,0 +1,30 @@
+<%= form_for @activity, url: user_activities_path do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id %>
+  <%= f.label :name do %>
+    <strong>Name:</strong>
+    <%= f.text_field :name, placeholder: 'Name' %>
+  <% end %>
+  <%= f.label :private, class: 'checkbox' do %>
+    <%= f.check_box :private %>
+    <strong>Private</strong>
+  <% end %>
+  <%= f.label :tracking_type do %>
+    <strong>Type:</strong>
+    <%= f.select :tracking_type, ['Timed','Counted'], include_blank: true %>
+  <% end %>
+  <div class="btns">
+    <%= f.submit %>
+  </div>
+<% end %>

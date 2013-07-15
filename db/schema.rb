@@ -11,29 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715220843) do
+ActiveRecord::Schema.define(version: 20130715225028) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.boolean  "private"
-    t.string   "trackmethod"
+    t.string   "tracking_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
-
-  create_table "authentications", force: true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
-  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "instances", force: true do |t|
     t.integer  "activity_id"

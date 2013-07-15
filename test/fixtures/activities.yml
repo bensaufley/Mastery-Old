@@ -4,10 +4,10 @@ one:
   user_id: 1
   name: MyString
   private: false
-  trackmethod: MyString
+  tracking_type: MyString
 
 two:
   user_id: 1
   name: MyString
   private: false
-  trackmethod: MyString
+  tracking_type: MyString

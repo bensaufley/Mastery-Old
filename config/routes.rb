@@ -1,7 +1,7 @@
 Mastery::Application.routes.draw do
 
-  get "users/index"
-  get "users/show"
+  resources :instances
+
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, only: [ :index, :show ] do
     resources :activities, except: [ :index ] do

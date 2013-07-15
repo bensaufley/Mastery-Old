@@ -1,0 +1,30 @@
+<%= form_for(@instance) do |f| %>
+  <% if @instance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instance.errors.count, "error") %> prohibited this instance from being saved:</h2>
+
+      <ul>
+      <% @instance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :activity_id %>
+  <%= f.label :when do %>
+    <strong>When:</strong>
+    <%= f.datetime_select :when, placeholder: 'When' %>
+  <% end %>
+  <%= f.label :until do %>
+    <strong>Until:</strong>
+    <%= f.datetime_select :until, placeholder: 'Until' %>
+  <% end %>
+  <%= f.label :private, class: 'checkbox' do %>
+    <%= f.check_box :private %>
+    <strong>Private</strong>
+  <% end %>
+  <div class="btns">
+    <%= f.submit %>
+  </div>
+<% end %>

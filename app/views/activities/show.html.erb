@@ -1,2 +1,24 @@
-<h1>Instance#show</h1>
-<p>Find me in app/views/instance/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @activity.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @activity.name %>
+</p>
+
+<p>
+  <strong>Private:</strong>
+  <%= @activity.private %>
+</p>
+
+<p>
+  <strong>Tracking type:</strong>
+  <%= @activity.tracking_type %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

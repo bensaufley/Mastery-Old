@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @instance.activity_id %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @instance.when %>
+</p>
+
+<p>
+  <strong>Until:</strong>
+  <%= @instance.until %>
+</p>
+
+<p>
+  <strong>Private:</strong>
+  <%= @instance.private %>
+</p>
+
+<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<%= link_to 'Back', instances_path %>
