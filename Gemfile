@@ -36,6 +36,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'devise'
 
 # Social integration
 gem 'omniauth'

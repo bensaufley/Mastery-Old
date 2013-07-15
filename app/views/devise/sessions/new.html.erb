@@ -1,0 +1,27 @@
+<%= content_for :title, 'Sign In' %>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+  <%= f.label :username do %>
+    <strong>Username:</strong>
+    <%= f.text_field :username, :placeholder => 'Username' %>
+  <% end %>
+
+  <%= f.label :password do %>
+    <strong>Password:</strong>
+    <%= f.password_field :password, :placeholder => 'Password' %>
+  <% end %>
+
+  <% if devise_mapping.rememberable? -%>
+    <%= f.label :remember_me, class: 'checkbox' do %>
+      <%= f.check_box :remember_me %>
+      <strong>Remember Me</strong>
+    <% end %>
+  <% end -%>
+
+  <div class="btns">
+    <%= f.submit "Sign in", class: 'btn default' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

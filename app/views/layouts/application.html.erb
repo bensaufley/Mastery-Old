@@ -8,19 +8,23 @@
 </head>
 <body>
   <nav id="user_nav">
-    <% if current_user %>
-      Signed in as <strong><%= current_user.name %></strong>
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <% if user_signed_in? %>
+      Signed in as <strong><%= current_user.username %></strong>
+      <%= link_to "Edit profile", edit_user_registration_path %> |
+      <%= link_to "Sign Out", destroy_user_session_path, id: "signout", method: :delete %>
     <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <%= link_to "Sign Up", new_user_registration_path, id: "signup" %>
+      <%= link_to "Sign In", new_user_session_path, id: "signin" %>
     <% end %>
   </nav>
   <header>
-    <h1>Mastery</h1>
+    <h1><%= link_to "Mastery", "/" %></h1>
     <%= content_tag(:h2, yield(:title)) if content_for? :title %>
     <%= yield(:subhead) if content_for? :subhead %>
   </header>
   <main>
+    <%= content_tag(:p, notice, class: 'notice') if notice %>
+    <%= content_tag(:p, alert, class: 'alert') if alert %>
     <%= yield %>
   </main>
   <footer>

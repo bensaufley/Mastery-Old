@@ -1,9 +1,10 @@
 Mastery::Application.routes.draw do
 
-  get "sessions/create"
-  get 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/'), via: [ :get, :post ]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: [ :get, :delete ]
+  devise_for :users
+  # get "sessions/create"
+  # get 'auth/:provider/callback', to: 'sessions#create'
+  # match 'auth/failure', to: redirect('/'), via: [ :get, :post ]
+  # match 'signout', to: 'sessions#destroy', as: 'signout', via: [ :get, :delete ]
   
   root 'static_pages#index'
   
