@@ -3,9 +3,13 @@ Mastery::Application.routes.draw do
   resources :instances
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
-  resources :users, only: [ :index, :show ] do
-    resources :activities, except: [ :index ] do
-      resources :instances, except: [ :index ]
+  scope :users do
+    match '/', to: 'users#index', via: :get
+    match '/:username', to: 'users#show', via: [ :get, :post ], as: 'user'
+    scope '/:username', as: 'user' do
+      resources :activities do
+        resources :instances
+      end
     end
   end
   # get "sessions/create"

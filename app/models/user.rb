@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   has_many :activities
   has_many :instances, through: :activities
 
+  def to_param
+    username
+  end
 end

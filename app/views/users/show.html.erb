@@ -9,5 +9,6 @@
         @activities.each do |activity| %>
         <li><%= link_to activity.name, user_activity_path(current_user,activity) %></li>
       <% end
-      end %>
+    end %>
+  </ul>
 <%= link_to "New Activity", new_user_activity_path(current_user) %>
