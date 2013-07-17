@@ -1,6 +1,8 @@
 class Instance < ActiveRecord::Base
   belongs_to :activity
-  before_update :set_till, only: :update
+  before_create :check_for_running
+  before_update :set_till
+
   attr_accessor :till_now
   
   validates_associated :activity
