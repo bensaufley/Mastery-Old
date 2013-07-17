@@ -1,0 +1,6 @@
+<%= form_for [user,activity,instance] do |f| %>
+  <p>Began <%= time_ago_in_words(instance.when) %> ago.</p>
+  <%= f.hidden_field :activity_id %>
+  <%= f.hidden_field :till, value: Time.now %>
+  <%= f.submit "End", class: 'btn default' %>
+<% end %>

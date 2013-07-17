@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715225028) do
+ActiveRecord::Schema.define(version: 20130717033011) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20130715225028) do
   create_table "instances", force: true do |t|
     t.integer  "activity_id"
     t.datetime "when"
-    t.datetime "until"
+    t.datetime "till"
     t.boolean  "private"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -26,10 +26,11 @@ class InstancesController < ApplicationController
   # POST /instances.json
   def create
     @instance = Instance.new(instance_params)
+    @instance.when ||= Time.now
 
     respond_to do |format|
       if @instance.save
-        format.html { redirect_to @instance, notice: 'Instance was successfully created.' }
+        format.html { redirect_to [@instance.activity.user,@instance.activity], notice: 'Instance was successfully created.' }
         format.json { render action: 'show', status: :created, location: @instance }
       else
         format.html { render action: 'new' }
@@ -41,9 +42,10 @@ class InstancesController < ApplicationController
   # PATCH/PUT /instances/1
   # PATCH/PUT /instances/1.json
   def update
+
     respond_to do |format|
       if @instance.update(instance_params)
-        format.html { redirect_to @instance, notice: 'Instance was successfully updated.' }
+        format.html { redirect_to [@instance.activity.user,@instance.activity], notice: 'Instance was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,6 +72,7 @@ class InstancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instance_params
-      params.require(:instance).permit(:activity_id, :when, :until, :private)
+      params.require(:instance).permit(:activity_id, :when, :till, :private)
     end
+
 end
