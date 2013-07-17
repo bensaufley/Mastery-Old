@@ -7,7 +7,7 @@
       <li>No activities yet.</li>
     <% else
         @activities.each do |activity| %>
-        <li><%= link_to activity.name, user_activity_path(current_user,activity) %></li>
+        <li><%= link_to activity.name, user_activity_path(current_user,activity) %>: <%= humanize(activity.instances.time_spent) %></li>
       <% end
     end %>
   </ul>

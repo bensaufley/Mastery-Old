@@ -16,11 +16,18 @@
 
 <% if @activity.tracking_type == 'Timed' %>
   <p>Total time spent:</p>
-  <p class="timespent"><%= time_ago_in_words @activity.instances.time_spent.from_now %></p>
+  <p class="timespent"><%= humanize(@activity.instances.time_spent) %></p>
 <% end %>
 
 <ul>
   <%- @activity.instances.order('`when` DESC').each do |instance| %>
-    <li><%= instance.when.strftime('%A, %B %e at %l:%M%P') %><%= @activity.tracking_type=='Timed' ? " for " + distance_of_time_in_words(instance.when,instance.till) : "" %></li>
-  <% end %>
+    <li><%= instance.when.strftime('%A, %B %e at %l:%M%P') -%>
+      <%- if @activity.tracking_type=='Timed' -%>|
+        <%- if instance.till.nil? -%>
+          ongoing
+          <%= render partial: '/instances/stop_timed_instance_form', locals: { user: @user, activity: @activity, instance: instance } -%>
+        <%- else -%><%=humanize_short((instance.till || Time.now) - instance.when) -%>
+        <%- end -%>
+      <%- end -%></li>
+  <%- end -%>
 </ul>

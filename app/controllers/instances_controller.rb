@@ -5,35 +5,48 @@ class InstancesController < ApplicationController
   # GET /instances
   # GET /instances.json
   def index
-    @instances = Instance.all
+    @activity = Activity.find(params[:activity_id])
+    respond_to do |format|
+      format.html { redirect_to [ @activity.user, @activity ] }
+      format.json { render json: @activity.instances }
+    end
   end
 
   # GET /instances/1
   # GET /instances/1.json
   def show
+    @activity = @instance.activity
+    respond_to do |format|
+      format.html { redirect_to [@activity.user, @activity] }
+      format.json { render json: @instance }
+    end
   end
 
   # GET /instances/new
   def new
-    @instance = Instance.new
+    @activity = Activity.find(params[:activity_id])
+    redirect_to [ @activity.user, @activity ]
   end
 
   # GET /instances/1/edit
   def edit
+    @activity = @instance.activity
+    @user = @activity.user
   end
 
   # POST /instances
   # POST /instances.json
   def create
     @instance = Instance.new(instance_params)
+    @activity = Activity.find(params[:activity_id])
     @instance.when ||= Time.now
 
     respond_to do |format|
       if @instance.save
-        format.html { redirect_to [@instance.activity.user,@instance.activity], notice: 'Instance was successfully created.' }
+        format.html { redirect_to [@activity.user,@activity], notice: 'Instance was successfully created.' }
         format.json { render action: 'show', status: :created, location: @instance }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to [@activity.user,@activity] }
         format.json { render json: @instance.errors, status: :unprocessable_entity }
       end
     end
@@ -57,9 +70,10 @@ class InstancesController < ApplicationController
   # DELETE /instances/1
   # DELETE /instances/1.json
   def destroy
+    @activity = @instance.activity
     @instance.destroy
     respond_to do |format|
-      format.html { redirect_to instances_url }
+      format.html { redirect_to [@activity.user,@activity] }
       format.json { head :no_content }
     end
   end
@@ -72,7 +86,7 @@ class InstancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instance_params
-      params.require(:instance).permit(:activity_id, :when, :till, :private)
+      params.require(:instance).permit(:activity_id, :when, :till, :private, :till_now)
     end
 
 end

@@ -1,6 +1,7 @@
 class Instance < ActiveRecord::Base
   belongs_to :activity
-  before_validation :set_till
+  before_update :set_till, only: :update
+  attr_accessor :till_now
   
   validates_associated :activity
   validates :when, presence: true
@@ -27,9 +28,6 @@ class Instance < ActiveRecord::Base
   protected
     
     def set_till
-      logger.info self.attributes
-      logger.info "Till: #{till}/#{self.till}"
-      self.till = Time.now if till == 0
-      logger.info "Till: #{till}/#{self.till}"
+      self.till = Time.now if till_now
     end
 end
