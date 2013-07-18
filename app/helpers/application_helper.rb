@@ -1,9 +1,9 @@
 module ApplicationHelper
   def humanize secs
-    [[60, :seconds], [60, :minutes], [24, :hours], [365, :days], [1000, :years]].map{ |count, name|
+    [[60, :second], [60, :minute], [24, :hour], [365, :day], [1000, :year]].map{ |count, name|
       if secs > 0
         secs, n = secs.divmod(count)
-        "#{n.to_i} #{name}"
+        pluralize(n.to_i, "#{name}")
       end
     }.compact.reverse.to_sentence
   end

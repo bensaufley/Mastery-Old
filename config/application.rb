@@ -16,6 +16,8 @@ module Mastery
       end if File.exists?(env_file)
     end
 
+    config.time_zone = 'Eastern Time (US & Canada)'
+
     config.sass.preferred_syntax = :sass
 
     config.assets.initialize_on_precompile = false

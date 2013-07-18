@@ -59,19 +59,20 @@ h3
   &:hover
     text-decoration: none !important
 
+html
+  height: 100%
 html, body
   width: 100%
   min-height: 100%
 
 body
-  height: 100%
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif
   font-weight: 300
   font-size: 62.5%
   margin-bottom: 4.8em
   position: relative
-  background: rgb(245,243,240)
-  padding: 4.8em 0 0
+  background: $background
+  padding: 4.8em 0
   & > nav, & > header, & > main
     font-size: 1.6em
     line-height: 1.3em
@@ -89,7 +90,10 @@ body
     width: 100%
     @include box-shadow(0 6px 15px rgba(0,0,0,.1))
     @media screen and (max-width: 640px)
-      padding: .85em 5px
+      padding: .65em 0 .65em 5px
+      .btn, #signin, #signout
+        border-width: 0 0 0 1px
+        @include border-radius(0)
     nav.subnav
       float: left
       text-transform: uppercase
@@ -98,7 +102,7 @@ body
     text-align: center
     padding: 15px 0
     @media screen and (max-width: 640px)
-      padding: 10px 0
+      padding: 10px
     h1
       max-width: 300px
       margin: 0 auto .4em
@@ -157,20 +161,26 @@ body
     margin: 0 auto 30px
     padding: 15px
     @media screen and (max-width: 640px)
-      padding: 10px 5px
+      padding: 10px
   & > footer
     font-size: 1.2em
     line-height: 1.3em
     line-height: 1.7333em
     text-align: center
     position: absolute
-    top: 100%
+    bottom: 0
     width: 100%
     height: 4em
     padding: 1em 15px
     color: #fff
     border-top: 1px solid rgb(95,93,90)
     background: rgb(145,143,140)
+    a:link, a:visited
+      color: #fff
+      text-decoration: underline
+      &:hover
+        color: #fff
+        text-decoration: none
   
 
 // Forms
@@ -264,7 +274,7 @@ label
   @media screen and (max-width: 640px)
     &, form &
       font-size: 1em
-      padding: .85em .45em
+      padding: .65em .45em
   &.cancel
     font-size: .75em
     color: desaturate($red, 50%)

@@ -2,16 +2,17 @@
 
 <section class="activities">
   <h1>Activities</h1>
-  <ul>
+  <ul class="activities">
     <% if @activities.empty? %>
       <li>No activities yet.</li>
     <% else
         @activities.each do |activity| %>
-        <li><%= link_to activity.name, user_activity_path(current_user,activity) %>:
+        <li>
+          <%= link_to activity.name, user_activity_path(current_user,activity) %>
           <%- if activity.tracking_type=='Timed' %>
             <%= humanize(activity.instances.time_spent) %>
           <%- else %>
-            <%= activity.instances.count %> times
+            <%= pluralize(activity.instances.count, "time") %>
           <%- end %></li>
       <% end
     end %>

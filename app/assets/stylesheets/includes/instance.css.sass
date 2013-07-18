@@ -1,3 +1,67 @@
 // Place all the styles related to the instance controller here.
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
+
+@import shared
+
+section.activity
+  section.instances
+    header
+      padding-top: 15px
+      border-top: 1px solid rgb(230,228,225)
+      & > div
+        font-size: 1.4em
+        line-height: 1.3em
+        text-align: center
+        background: desaturate(darken($background,2.5%),2.5%)
+        @include text-shadow(0 3px 3px rgba(0,0,0,.2))
+        @include box-shadow(0 3px 6px rgba(0,0,0,.3) inset)
+        @include border-radius(3px)
+        p
+          padding: .35em
+          border-bottom: 1px solid desaturate(darken($background,10%),10%)
+          margin-bottom: 0
+          &:last-child
+            border-bottom: none
+          &.week
+            color: lighten(#444,10%)
+          &.month
+            color: lighten(lighten(#444,10%),10%)
+          &.year
+            color: lighten(lighten(lighten(#444,10%),10%),10%)
+
+ul.instances
+  li
+    font-size: 1.2em
+    line-height: 1.3em
+    background: rgb(250,248,245)
+    margin: .3em 0
+    @include border-radius(3px)
+    @include clearfix
+    &:hover
+      background: #fff
+    div
+      display: table
+      width: 100%
+      margin: 0
+      span, strong, form
+        display: table-cell
+        vertical-align: middle
+      span
+        padding: .35em
+      strong
+        text-align: right
+        padding: .35em
+      form
+        width: 2.5em
+        padding-top: 0 !important
+        text-align: center
+      .btn
+        width: 2.5em
+        margin: 0
+        text-transform: none
+    @media screen and (max-width: 480px)
+      font-size: 1em
+      div
+        .btn
+          @include border-radius(100%)
