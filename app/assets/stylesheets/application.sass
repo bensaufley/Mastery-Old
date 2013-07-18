@@ -47,6 +47,60 @@ body
   & > header
     text-align: center
     padding: 15px 0
+    h1
+      max-width: 300px
+      margin: 0 auto
+      a:link, a:visited
+        width: 100%
+        height: 0
+        padding: 26.6666% 0 0
+        background: transparent image-url('logo.png') no-repeat center
+        display: block
+        position: relative
+        @include text-hide
+        html.backgroundsize &
+          background-size: contain
+        &.anim
+          background-image: image-url('logo-anim.png')
+        @media screen and (min-device-pixel-ratio: 1.5), screen and (-webkit-min-device-pixel-ratio: 1.5)
+          background-size: contain
+          background-image: image-url('2x/logo.png')
+          &.anim
+            background-image: image-url('2x/logo-anim.png')
+        #e_anim, #m_anim, #s_anim
+          @include backface-visibility(hidden)
+          @include transition(transform .5s)
+        #e_anim
+          width: 40px
+          height: 40px
+          background: transparent image-url('e.png')
+          position: absolute
+          top: 14px
+          left: 180px
+        #m_anim
+          width: 2px
+          height: 20px
+          background: #9f9990
+          overflow: hidden
+          position: absolute
+          top: 34px
+          left: 199px
+          -webkit-transform-origin: 1px 0
+          -moz-transform-origin: 1px 0
+          transform-origin: 1px 0
+          @include box-shadow(0 0 2px 1px #222)
+        #s_anim
+          width: 1px
+          height: 20px
+          background: #444
+          overflow: hidden
+          position: absolute
+          top: 34px
+          left: 200px
+          -webkit-transform-origin: 0 0
+          -moz-transform-origin: 0 0
+          transform-origin: 1px 0
+          @include box-shadow(0 0 2px #fff)
   & > main
     max-width: 960px
     margin: 0 auto

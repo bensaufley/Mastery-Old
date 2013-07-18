@@ -32,4 +32,8 @@ class Instance < ActiveRecord::Base
     def set_till
       self.till = Time.now if till_now
     end
+    
+    def check_for_running
+      
+    end
 end

@@ -1,2 +1,25 @@
 @import compass
 
+$green: #227733
+$red: #ec3330
+
+@mixin text-hide
+  overflow: hidden
+  white-space: nowrap
+  text-indent: 150%
+  
+@mixin btn($color, $text: #fff)
+  color: $text
+  background-color: $color
+  @include text-shadow(0 -1px 1px darken($color,15%), 0 1px 1px mix(#ff0,$color,15%))
+  @include background(linear-gradient(top,mix(#ff0,$color,15%),mix(#333,$color,15%)))
+  @include box-shadow(0 3px 6px transparentize(darken($color,5%),.4), 0 3px 4px mix(#ff0,$color,50%) inset, 0 -3px 4px darken($color,20%) inset, 0 -6px 15px transparentize(mix(#ff0,$color,50%),.4) inset, 0 6px 15px transparentize(darken($color,15%),.6) inset)
+  &:hover
+    @include text-shadow(0 -1px 1px darken($color,15%), 0 1px 1px mix(#ff0,$color,25%))
+    @include background(linear-gradient(top,mix(#ff0,$color,35%),mix(#333,$color,5%)))
+    @include box-shadow(0 4px 8px transparentize($color,.3), 0 3px 4px mix(#ff0,$color,50%) inset, 0 -3px 4px darken($color,20%) inset, 0 -6px 15px transparentize(mix(#ff0,$color,50%),.4) inset, 0 6px 15px transparentize(darken($color,15%),.6) inset)
+  &:active
+    color: mix($text, $color, 80%)
+    @include text-shadow(0 -1px 1px darken($color,25%), 0 1px 1px mix(#ff0,$color,5%))
+    @include background(linear-gradient(top,mix(#333,$color,25%),mix(#ff0,$color,5%)))
+    @include box-shadow(0 5px 15px darken($color,25%) inset, 0 1px 2px transparentize(darken($color,5%),.4), 0 3px 4px mix(#ff0,$color,50%) inset, 0 -3px 4px darken($color,10%) inset, 0 -6px 15px transparentize(mix(#ff0,$color,50%),.8) inset, 0 6px 15px transparentize(darken($color,15%),.6) inset)

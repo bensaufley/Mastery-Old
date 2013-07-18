@@ -8,6 +8,9 @@
   <%- if !@activity.instances.running? %>
     <%= render partial: '/instances/start_timed_instance_form', locals: { user: @user, activity: @activity, instance: @activity.instances.new } %>
   <%- else %>
+    <div id="counter" data-when="<%=@activity.instances.running.when.to_i * 1000 %>">
+      <%= humanize_short(Time.now - @activity.instances.running.when) %>
+    </div>
     <%= render partial: '/instances/stop_timed_instance_form', locals: { user: @user, activity: @activity, instance: @activity.instances.running } %>
   <%- end %>
 <%- else %>
@@ -24,8 +27,7 @@
     <li><%= instance.when.strftime('%A, %B %e at %l:%M%P') -%>
       <%- if @activity.tracking_type=='Timed' -%>|
         <%- if instance.till.nil? -%>
-          ongoing
-          <%= render partial: '/instances/stop_timed_instance_form', locals: { user: @user, activity: @activity, instance: instance } -%>
+          (ongoing)
         <%- else -%><%=humanize_short((instance.till || Time.now) - instance.when) -%>
         <%- end -%>
       <%- end -%></li>
