@@ -35,13 +35,12 @@ counter = ->
     temp = divmod(x[0],count)
     count = temp.div
     if temp.rem!=0 || x[2]
-      if temp.rem.length < x[1]
-        new Array(x[1] - temp.rem.length).join('0') + temp.rem
+      if temp.rem.toString().length < x[1]
+        new Array(x[1] - temp.rem.toString().length + 1).join('0') + temp.rem.toString()
       else
         temp.rem
   disp = disp.filter (x) ->
     x != undefined
-  console.log disp
   $('#counter').html(disp.reverse().join(':'))
 
 $(document).ready ->
