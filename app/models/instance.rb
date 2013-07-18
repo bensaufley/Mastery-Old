@@ -34,6 +34,8 @@ class Instance < ActiveRecord::Base
     end
     
     def check_for_running
-      
+      if Instance.where(activity_id: activity_id).running?
+        errors.add(:base, "already running")
+      end
     end
 end

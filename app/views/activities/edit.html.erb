@@ -1,6 +1,7 @@
-<h1>Editing activity</h1>
+<% content_for :title, "Editing activity: #{@activity.name}" %>
+<% content_for :subnav do %>
+  <%= link_to 'Show', user_activity_path(@activity.user,@activity) %> |
+  <%= link_to 'Back', user_path %>
+<% end %>
 
 <%= render 'form', user: @user, activity: @activity %>
-
-<%= link_to 'Show', user_activity_path(@activity.user,@activity) %> |
-<%= link_to 'Back', user_activities_path %>

@@ -1,5 +1,7 @@
-<h1>New activity</h1>
+<% content_for :title, "New Activity" %>
+<% content_for :subnav do %>
+  <%= link_to 'Back', user_path(@user) %>
+<% end %>
 
 <%= render 'form', user: @user, activity: @activity  %>
 
-<%= link_to 'Back', user_activities_path %>

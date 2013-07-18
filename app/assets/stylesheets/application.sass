@@ -17,6 +17,9 @@
 
 *
   @include box-sizing(border-box)
+
+h1, h2, h3, p, ol, ul, section, article, div, aside
+  margin-bottom: 8px
   
 strong
   font-weight: 700
@@ -89,6 +92,8 @@ body
       padding: .85em 5px
     nav.subnav
       float: left
+      text-transform: uppercase
+      font-size: .875em
   & > header
     text-align: center
     padding: 15px 0
@@ -116,7 +121,6 @@ body
             background-image: image-url('2x/logo-anim.png')
         #e_anim, #m_anim, #s_anim
           @include backface-visibility(hidden)
-          @include transition(transform .5s)
         #e_anim
           width: 40px
           height: 40px
@@ -184,6 +188,7 @@ label
   strong, input, textarea, select
     float: left
     line-height: 1.3em
+    display: block
   strong
     text-align: right
     width: 30%
@@ -194,13 +199,38 @@ label
     padding: .3em
     margin: 0
     border: 1px solid #444
-  &.radio, &.checkbox
+    @include border-radius(3px)
+  input, select
+    height: 1.9em
+  aside
+    font-size: .875em
+    line-height: 1.3em
+    font-style: italic
+    width: 70%
+    margin-left: 30%
+    margin-bottom: .2em
+  html.placeholder &
     strong
-      width: auto
-    input
-      width: 5%
-      margin-left: 25%
-      text-align: center
+      display: none
+    input, textarea, select
+      width: 100%
+    aside
+      width: 100%
+      margin-left: 0
+    &.radio, &.checkbox, &.show
+      strong
+        display: block
+    &.show
+      input, textarea, select
+        width: 70%      
+  &.radio, &.checkbox
+    &, html.placeholder &
+      strong
+        width: auto
+      input
+        width: 5%
+        margin-left: 25%
+        text-align: center
 
 // Buttons
 
@@ -210,10 +240,36 @@ label
   border-style: solid
   background: rgb(255,253,250)
   border-color: rgb(195,193,190)
+  cursor: pointer
+  display: inline-block
+  text-align: center
   @include background-image(linear-gradient(top,#fff,rgb(245,243,240)))
   @include border-radius(3px)
+  body > nav &
+    display: inline
+  &:hover
+    color: $red
+    text-decoration: none !important
   &:active
     @include background-image(linear-gradient(bottom,#fff,rgb(245,243,240)))
   &.full
     width: 100%
+  &.half
+    width: 50%
+    &.right
+      margin-left: 50%
+  form &
+    text-transform: uppercase
+    font-size: .875em
+  @media screen and (max-width: 640px)
+    &, form &
+      font-size: 1em
+      padding: .85em .45em
+  &.cancel
+    font-size: .75em
+    color: desaturate($red, 50%)
+    border-color: desaturate($red,50%)
+    &:hover
+      color: $red
+      border-color: $red
     

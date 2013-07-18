@@ -15,7 +15,7 @@
     <%= render partial: '/instances/stop_timed_instance_form', locals: { user: @user, activity: @activity, instance: @activity.instances.running } %>
   <%- end %>
 <%- else %>
-  <%= render partial: '/instances/count_instance_form', user: @user, activity: @activity, instance: @activity.instances.new %>
+  <%= render partial: '/instances/count_instance_form', locals: { user: @user, activity: @activity, instance: @activity.instances.new } %>
 <%- end %>
 
 <% if @activity.tracking_type == 'Timed' %>

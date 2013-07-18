@@ -16,15 +16,15 @@
     <strong>Name:</strong>
     <%= f.text_field :name, placeholder: 'Name' %>
   <% end %>
+  <%= f.label :tracking_type do %>
+    <strong>Type:</strong>
+    <%= f.select :tracking_type, ['Timed','Counted'], include_blank: '–Type–' %>
+  <% end %>
   <%= f.label :private, class: 'checkbox' do %>
     <%= f.check_box :private %>
     <strong>Private</strong>
   <% end %>
-  <%= f.label :tracking_type do %>
-    <strong>Type:</strong>
-    <%= f.select :tracking_type, ['Timed','Counted'], include_blank: true %>
-  <% end %>
   <div class="btns">
-    <%= f.submit %>
+    <%= f.submit activity.new_record? ? "Create" : "Update", class: 'btn half right default' %>
   </div>
 <% end %>
