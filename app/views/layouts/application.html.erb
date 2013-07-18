@@ -23,7 +23,7 @@
   <header>
     <h1><%= link_to "Mastery", "/" %></h1>
     <%= content_tag(:h2, yield(:title)) if content_for? :title %>
-    <%= yield(:subhead) if content_for? :subhead %>
+    <%= content_tag(:h3, yield(:subhead)) if content_for? :subhead %>
   </header>
   <main>
     <%= content_tag(:p, notice, class: 'notice') if notice %>
