@@ -1,6 +1,7 @@
-<h1>Editing instance</h1>
+<% content_for :title, "Editing instance" %>
+<% content_for :subnav do %>
+  <%= link_to 'Show', [@instance.activity, @instance] %>
+<% end %>
 
-<%= render 'form' %>
+<%= render 'form', locals: { user: @instance.activity.user, activity: @instance.activity, instance: @instance } %>
 
-<%= link_to 'Show', @instance %> |
-<%= link_to 'Back', instances_path %>
