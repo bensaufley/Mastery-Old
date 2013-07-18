@@ -19,6 +19,8 @@ module Mastery
     config.sass.preferred_syntax = :sass
 
     config.assets.initialize_on_precompile = false
+    
+    config.assets.precompile += %w( modernizr.js )
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
