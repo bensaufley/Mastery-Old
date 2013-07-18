@@ -51,6 +51,11 @@ h3
   font-weight: 100
   letter-spacing: 1px
 
+.icon, .preicon:before
+  font-family: 'icons'
+  &:hover
+    text-decoration: none !important
+
 html, body
   width: 100%
   min-height: 100%
@@ -67,21 +72,28 @@ body
   & > nav, & > header, & > main
     font-size: 1.6em
     line-height: 1.3em
+    @media screen and (max-width: 640px)
+      font-size: 1.4em
   & > nav
     text-align: right
     padding: .85em 15px
     background: rgb(235,233,230)
     border-bottom: 1px solid rgb(195,193,190)
-    height: 3em
     position: fixed
     z-index: 500
     top: 0
     left: 0
     width: 100%
     @include box-shadow(0 6px 15px rgba(0,0,0,.1))
+    @media screen and (max-width: 640px)
+      padding: .85em 5px
+    nav.subnav
+      float: left
   & > header
     text-align: center
     padding: 15px 0
+    @media screen and (max-width: 640px)
+      padding: 10px 0
     h1
       max-width: 300px
       margin: 0 auto .4em
@@ -140,6 +152,8 @@ body
     max-width: 640px
     margin: 0 auto 30px
     padding: 15px
+    @media screen and (max-width: 640px)
+      padding: 10px 5px
   & > footer
     font-size: 1.2em
     line-height: 1.3em
@@ -187,4 +201,19 @@ label
       width: 5%
       margin-left: 25%
       text-align: center
+
+// Buttons
+
+.btn, #signin, #signout
+  padding: .45em
+  border-width: 1px
+  border-style: solid
+  background: rgb(255,253,250)
+  border-color: rgb(195,193,190)
+  @include background-image(linear-gradient(top,#fff,rgb(245,243,240)))
+  @include border-radius(3px)
+  &:active
+    @include background-image(linear-gradient(bottom,#fff,rgb(245,243,240)))
+  &.full
+    width: 100%
     

@@ -1,8 +1,9 @@
 <% content_for :title, "#{@activity.tracking_type.titleize} Activity: #{@activity.name}" %>
 <% content_for :subhead, @activity.private ? "(Private)" : "(Public)" %> 
-
-<%= link_to 'Edit', edit_user_activity_path(@user,@activity) %> |
-<%= link_to 'Back', user_activities_path(@user) %>
+<% content_for :subnav do %>
+  <%= link_to 'Edit', edit_user_activity_path(@user,@activity) %> |
+  <%= link_to 'Back', user_activities_path(@user) %>
+<% end %>
 
 <%- if @activity.tracking_type == 'Timed' %>
   <%- if !@activity.instances.running? %>

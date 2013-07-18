@@ -10,9 +10,10 @@
 </head>
 <body>
   <nav id="user_nav">
+    <%= content_tag(:nav, yield(:subnav), class:'subnav') if content_for? :subnav %>
     <% if user_signed_in? %>
-      Signed in as <strong><%= current_user.username %></strong>
-      <%= link_to "Edit profile", edit_user_registration_path %>
+      Signed in as <strong><%= link_to current_user.username, current_user %></strong>
+      <%= link_to "&#x2731;".html_safe, edit_user_registration_path, class: 'icon', title: 'Edit Settings' %>
       <%= link_to "Sign Out", destroy_user_session_path, id: "signout", method: :delete %>
     <% else %>
       <%= link_to "Sign Up", new_user_registration_path, id: "signup" %>

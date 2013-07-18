@@ -11,3 +11,116 @@
   src: asset-url('fonts/bentham/bentham-webfont.eot?#iefix') format('embedded-opentype'), asset-url('fonts/bentham/bentham-webfont.woff') format('woff'), asset-url('fonts/bentham/bentham-webfont.ttf') format('truetype'), asset-url('fonts/bentham/bentham-webfont.svg#benthamregular') format('svg')
   font-weight: normal
   font-style: normal
+
+@font-face
+  font-family: 'icons'
+  src: asset-url('fonts/icons/icons.eot?68369811')
+  src: asset-url('fonts/icons/icons.eot?68369811#iefix') format("embedded-opentype"), asset-url('fonts/icons/icons.woff?68369811') format("woff"), asset-url('fonts/icons/icons.ttf?68369811') format("truetype"), asset-url('fonts/icons/icons.svg?68369811#icons') format("svg")
+  font-weight: normal
+  font-style: normal
+
+.icon, [class^="icon-"]:before, [class*=" icon-"]:before
+  font-family: "icons"
+  font-style: normal
+  font-weight: normal
+  speak: none
+  display: inline-block
+  text-decoration: inherit
+  width: 1em
+  margin-right: .2em
+  text-align: center
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes */
+  font-variant: normal
+  text-transform: none
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+
+[class^="icon-"]:before, [class*=" icon-"]:before
+  margin-left: .2em
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+
+.icon-home:before
+  content: '\48'
+
+/* 'H' */
+
+.icon-th-list:before
+  content: '\49'
+
+/* 'I' */
+
+.icon-cog:before
+  content: '\2731'
+
+/* '✶' */
+
+.icon-ok:before
+  content: '\2713'
+
+/* '✓' */
+
+.icon-cancel:before
+  content: '\2715'
+
+/* '✕' */
+
+.icon-plus-circle:before
+  content: '\2b'
+
+/* '+' */
+
+.icon-minus-circle:before
+  content: '\2d'
+
+/* '-' */
+
+.icon-pencil:before
+  content: '\45'
+
+/* 'E' */
+
+.icon-reply:before
+  content: '\2190'
+
+/* '←' */
+
+.icon-trash:before
+  content: '\78'
+
+/* 'x' */
+
+.icon-logout:before
+  content: '\58'
+
+/* 'X' */
+
+.icon-docs:before
+  content: '\64'
+
+/* 'd' */
+
+.icon-calendar:before
+  content: '\43'
+
+/* 'C' */
+
+.icon-user:before
+  content: '\50'
+
+/* 'P' */
+
+.icon-signal:before
+  content: '\52'
+
+/* 'R' */
+
+.icon-search:before
+  content: '\53'
+
+/* 'S' */
