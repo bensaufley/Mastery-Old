@@ -43,7 +43,7 @@ counter = ->
     x != undefined
   $('#counter').html(disp.reverse().join(':'))
 
-$(document).ready ->
+init = ->
   if $('html').hasClass('csstransforms')
     $logo = $('body > header h1 a')
     $logo.addClass('anim')
@@ -56,3 +56,6 @@ $(document).ready ->
   since = new Date($('#counter').data('when'))
   counter()
   clock = setInterval(counter,250)
+
+$(document).ready init
+document.addEventListener("page:change",init)
