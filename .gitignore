@@ -18,4 +18,4 @@ pickle-email-*.html
 .project
 /config/local_env.yml
 .DS_Store
-config/database.yml
+/config/database.yml
