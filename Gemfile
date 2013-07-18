@@ -10,7 +10,10 @@ gem 'rails', '4.0.0.rc1'
 
 # Using MySQL locally, PosgreSQL on Heroku.
 gem 'mysql2', group: [ :development, :test ]
+
+# Heroku stuff
 gem 'pg', group: :production
+gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
 gem 'compass-rails', git: "git://github.com/milgner/compass-rails.git", branch: "rails4"
