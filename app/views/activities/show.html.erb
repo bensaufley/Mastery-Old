@@ -50,7 +50,9 @@
               <%- end -%>
               </strong>
             <%- end -%>
-            <%= button_to "x", [@user,@activity,instance], method: :delete, confirm: "Are you sure you wish to delete this instance?", class: 'btn icon cancel' -%>
+            <%- if @activity.tracking_type!='Timed' || !instance.time_until.nil? -%>
+              <%= button_to "x", [@user,@activity,instance], method: :delete, confirm: "Are you sure you wish to delete this instance?", class: 'btn icon cancel' -%>
+            <%- end -%>
           </div>
         </li>
       <%- end -%>
