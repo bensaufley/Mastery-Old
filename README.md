@@ -28,3 +28,20 @@ This is the aim. I’ve seen apps achieve some of these things, but not all toge
 - Badges
 - Comments
 - More complicated tracking
+
+
+# To Do #
+
+## Users ##
+- Redirect current_user from users/:username path to root
+- Add friendships model & infrastructure
+  - Add news feed
+  - Add infrastructure for comments
+- Allow facebook/twitter validation, sharing
+
+## Activities ##
+- Create infrastructure of public activities and instances
+- Ajaxify?
+- Analytics
+
+## Instances ##
