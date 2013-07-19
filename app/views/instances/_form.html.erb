@@ -12,13 +12,13 @@
   <% end %>
 
   <%= f.hidden_field :activity_id %>
-  <%= f.label :when do %>
+  <%= f.label :time_when do %>
     <strong>When:</strong>
-    <%= f.datetime_select :when, placeholder: 'When' %>
+    <%= f.datetime_select :time_when, placeholder: 'When' %>
   <% end %>
-  <%= f.label :until do %>
+  <%= f.label :time_until do %>
     <strong>Until:</strong>
-    <%= f.datetime_select :until, placeholder: 'Until' %>
+    <%= f.datetime_select :time_until, placeholder: 'Until' %>
   <% end %>
   <%= f.label :private, class: 'checkbox' do %>
     <%= f.check_box :private %>

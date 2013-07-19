@@ -39,7 +39,7 @@ class InstancesController < ApplicationController
   def create
     @instance = Instance.new(instance_params)
     @activity = Activity.find(params[:activity_id])
-    @instance.when ||= Time.now
+    @instance.time_when ||= Time.now
 
     respond_to do |format|
       if @instance.save
@@ -86,7 +86,7 @@ class InstancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instance_params
-      params.require(:instance).permit(:activity_id, :when, :till, :private, :till_now)
+      params.require(:instance).permit(:activity_id, :time_when, :time_until, :private, :till_now)
     end
 
 end
