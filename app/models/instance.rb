@@ -1,29 +1,29 @@
 class Instance < ActiveRecord::Base
   belongs_to :activity
   before_create :check_for_running
-  before_update :set_till
+  before_update :set_time_until
 
   attr_accessor :till_now
   
   validates_associated :activity
-  validates :when, presence: true
+  validates :time_when, presence: true
     
   def self.running?
-    !all.empty? && order("`when` DESC").first.till.nil?
+    !all.empty? && order("time_when DESC").first.time_until.nil?
   end
   
   def self.running
-    all.empty? ? nil : where(till: nil).order("`when` DESC").first
+    all.empty? ? nil : where(time_until: nil).order("time_when DESC").first
   end
   
   def self.time_spent
     @time = 0
     if !all.nil?
       all.each do |i|
-        @time += (i.till - i.when) unless i.till.nil?
+        @time += (i.time_until - i.time_when) unless i.time_until.nil?
       end
-      where(till: nil).each do |i|
-        @time += (Time.now - i.when)
+      where(time_until: nil).each do |i|
+        @time += (Time.now - i.time_when)
       end
     end
     @time
@@ -32,13 +32,13 @@ class Instance < ActiveRecord::Base
   def self.times(range = 'all')
     case range
       when 'today'
-        where('CONVERT(`when`,date) = :x', { x: Time.now.to_date })
+        where('CONVERT(time_when,date) = :x', { x: Time.now.to_date })
       when 'in_last_week'
-        where('`when` >= :x', { x: 1.week.ago })
+        where('time_when >= :x', { x: 1.week.ago })
       when 'in_last_month'
-        where('`when` >= :x', { x: 1.week.ago })
+        where('time_when >= :x', { x: 1.week.ago })
       when 'in_last_year'
-        where('`when` >= :x', { x: 1.week.ago })
+        where('time_when >= :x', { x: 1.week.ago })
       else
         all
     end
@@ -47,8 +47,8 @@ class Instance < ActiveRecord::Base
   
   protected
     
-    def set_till
-      self.till = Time.now if till_now
+    def set_time_until
+      self.time_until = Time.now if till_now
     end
     
     def check_for_running
