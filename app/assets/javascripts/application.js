@@ -16,3 +16,7 @@
 //= require modernizr
 //= require quickclick
 //= require_tree ./include
+
+$(function() {
+    QuickClick.attach(document.body);
+});
