@@ -69,10 +69,9 @@ body
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif
   font-weight: 300
   font-size: 62.5%
-  margin-bottom: 4.8em
-  position: relative
   background: $background
   padding: 4.8em 0
+  position: relative
   & > nav, & > header, & > main
     font-size: 1.6em
     line-height: 1.3em
@@ -104,7 +103,7 @@ body
     @media screen and (max-width: 640px)
       padding: 10px
     h1
-      max-width: 300px
+      width: 300px
       margin: 0 auto .4em
       a:link, a:visited
         width: 100%
@@ -161,10 +160,9 @@ body
           @include box-shadow(0 0 2px #fff)
   & > main
     max-width: 640px
-    margin: 0 auto 30px
-    padding: 15px
+    margin: 0 auto
     @media screen and (max-width: 640px)
-      padding: 10px
+      margin: 0 10px
   & > footer
     font-size: 1.2em
     line-height: 1.3em
@@ -240,6 +238,7 @@ label
     &, html.placeholder &
       strong
         width: auto
+        margin-left: 5px
       input
         width: 5%
         margin-left: 25%

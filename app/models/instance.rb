@@ -13,16 +13,18 @@ class Instance < ActiveRecord::Base
   end
   
   def self.running
-    where(till: nil).order("`when` DESC").first
+    all.empty? ? nil : where(till: nil).order("`when` DESC").first
   end
   
   def self.time_spent
     @time = 0
-    all.each do |i|
-      @time += (i.till - i.when) unless i.till.nil?
-    end
-    where(till: nil).each do |i|
-      @time += (Time.now - i.when)
+    if !all.nil?
+      all.each do |i|
+        @time += (i.till - i.when) unless i.till.nil?
+      end
+      where(till: nil).each do |i|
+        @time += (Time.now - i.when)
+      end
     end
     @time
   end

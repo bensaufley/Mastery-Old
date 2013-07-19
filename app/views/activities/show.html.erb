@@ -24,7 +24,7 @@
       <% if @activity.tracking_type == 'Timed' %>
         <h2>Total time spent:</h2>
         <div>
-          <p class="timespent"><%= humanize(@activity.instances.time_spent) %></p>
+          <p class="timespent"><%= (@towords = humanize(@activity.instances.time_spent)) == "" ? "None yet" : @towords %></p>
         </div>
       <% else %>
         <h2>Times completed:</h2>
