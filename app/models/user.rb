@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :activities
   has_many :instances, through: :activities
+  
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   def to_param
     username

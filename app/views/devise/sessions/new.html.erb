@@ -4,7 +4,7 @@
 
   <%= f.label :username do %>
     <strong>Username:</strong>
-    <%= f.text_field :username, :placeholder => 'Username' %>
+    <%= f.text_field :username, :placeholder => 'Username', autocorrect: "off", autocapitalize: "off" %>
   <% end %>
 
   <%= f.label :password do %>

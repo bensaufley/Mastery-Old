@@ -5,12 +5,12 @@
 
   <%= f.label :email do %>
     <strong>Email:</strong>
-    <%= f.email_field :email, :autofocus => true, :placeholder => 'Email' %>
+    <%= f.email_field :email, :autofocus => true, :placeholder => 'Email', type: 'email' %>
   <% end %>
 
   <%= f.label :username do %>
     <strong>Username:</strong>
-    <%= f.text_field :username, :placeholder => 'Username' %>
+    <%= f.text_field :username, :placeholder => 'Username', autocorrect: "off", autocapitalize: "off" %>
   <% end %>
 
   <%= f.label :password do %>
