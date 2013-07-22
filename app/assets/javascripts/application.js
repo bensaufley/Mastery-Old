@@ -22,6 +22,6 @@ $(function() {
 })
 $(document).ready(function() {
   if (window.navigator.standalone) {
-    $(html).addClass('standalone')
+    $('html').addClass('standalone')
   }
 });
