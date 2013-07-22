@@ -32,7 +32,7 @@ class Instance < ActiveRecord::Base
   def self.times(range = 'all')
     case range
       when 'today'
-        where('CONVERT(time_when,date) = :x', { x: Time.now.to_date })
+        where('time_when >= :x AND time_when < :y', { x: Time.now.to_date.to_time, y: (Time.now.to_date + 1.day).to_time })
       when 'in_last_week'
         where('time_when >= :x', { x: 1.week.ago })
       when 'in_last_month'
