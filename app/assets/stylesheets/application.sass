@@ -96,6 +96,8 @@ body
     left: 0
     width: 100%
     @include box-shadow(0 6px 15px rgba(0,0,0,.1))
+    html.standalone &
+      border-top: 20px solid rgb(235,233,230)
     @media screen and (max-width: 640px)
       padding: .65em 0 .65em 5px
       .btn, #signin, #signout
