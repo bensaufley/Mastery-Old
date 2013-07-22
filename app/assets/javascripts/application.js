@@ -18,5 +18,10 @@
 //= require_tree ./include
 
 $(function() {
-    QuickClick.attach(document.body);
+    QuickClick.attach(document.body)
+})
+$(document).ready(function() {
+  if (window.navigator.standalone) {
+    $(html).addClass('standalone')
+  }
 });

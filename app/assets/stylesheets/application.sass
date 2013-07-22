@@ -75,6 +75,10 @@ body
   background: $background
   padding: 4.8em 0
   position: relative
+  @media screen and (max-width: 640px)
+    padding-top: 3.64em
+  html.standalone &
+    margin-top: 20px
   & > nav, & > header, & > main
     font-size: 1.6em
     line-height: 1.3em
@@ -105,7 +109,7 @@ body
     text-align: center
     padding: 15px 0
     @media screen and (max-width: 640px)
-      padding: 10px
+      padding: 0 10px 10px
     h1
       width: 300px
       margin: 0 auto .4em
