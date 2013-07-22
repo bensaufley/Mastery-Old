@@ -87,7 +87,7 @@ body
       font-size: 1.4em
   & > nav
     text-align: right
-    padding: .85em 15px
+    padding: .85em 15px .85em 0
     background: rgb(235,233,230)
     border-bottom: 1px solid rgb(195,193,190)
     position: fixed
@@ -98,15 +98,36 @@ body
     @include box-shadow(0 6px 15px rgba(0,0,0,.1))
     html.standalone &
       border-top: 20px solid rgb(235,233,230)
+    a:link, a:visited
+      text-decoration: none
+      &:hover
+        text-decoration: none
+      &#user
+        &:hover
+          text-decoration: none
+          &:before
+            content: '\48\00A0'
+            font-family: 'icons'
+    nav.mainnav, nav.subnav
+      float: left
+      text-transform: uppercase
+      a:link, a:visited
+        padding: .85em
+        border-right: 1px solid rgb(195,193,190)
+        &:hover
+          background-color: lighten(rgb(235,233,230),4%)
+        &:active
+          background-color: darken(rgb(235,233,230),2%)
+    nav.subnav
+      font-size: .875em
     @media screen and (max-width: 640px)
-      padding: .65em 0 .65em 5px
+      padding: .65em 0 .65em 0
       .btn, #signin, #signout
         border-width: 0 0 0 1px
         @include border-radius(0)
-    nav.subnav
-      float: left
-      text-transform: uppercase
-      font-size: .875em
+      nav.mainnav, nav.subnav
+        a:link, a:visited
+          padding: .65em
   & > header
     text-align: center
     padding: 15px 0
@@ -186,13 +207,18 @@ body
     color: #fff
     border-top: 1px solid rgb(95,93,90)
     background: rgb(145,143,140)
-    a:link, a:visited
-      color: #fff
-      text-decoration: underline
-      &:hover
+    .copyright
+      a:link, a:visited
         color: #fff
-        text-decoration: none
-  
+        text-decoration: underline
+        &:hover
+          color: #fff
+          text-decoration: none
+    .copyright, nav
+      display: inline-block
+      margin: 0
+      padding: 0
+      width: 50%
 
 // Forms
 

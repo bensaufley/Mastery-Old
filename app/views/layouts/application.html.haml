@@ -18,13 +18,14 @@
   %meta{ name: "viewport", content:"initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" }
   %body
     %nav#user_nav
-      = content_tag(:nav, yield(:subnav), class:'subnav') if content_for? :subnav
       - if user_signed_in?
-        Signed in as
-        %strong= link_to current_user.username, current_user
+        %nav.mainnav
+          = link_to "Activities", user_activities_path(current_user)
+        = content_tag(:nav, yield(:subnav), class:'subnav') if content_for? :subnav
+        %strong= link_to current_user.username, '/', id: 'user'
         = link_to "&#x2731;".html_safe, edit_user_registration_path, class: 'icon', title: 'Edit Settings'
-        = link_to "Sign Out", destroy_user_session_path, id: "signout", method: :delete
       - else
+        = content_tag(:nav, yield(:subnav), class:'subnav') if content_for? :subnav
         = link_to "Sign Up", new_user_registration_path, id: "signup"
         = link_to "Sign In", new_user_session_path, id: "signin"
         -#= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
@@ -38,4 +39,6 @@
       = content_tag(:p, alert, class: 'alert') if alert
       = yield
     %footer
-      Copyright &copy;#{Time.now.year} #{link_to "Ben Saufley", "http://bensaufley.com", target: "_blank"}.
+      %p.copyright
+        ="Copyright &copy;#{Time.now.year} #{link_to "Ben Saufley", "http://bensaufley.com", target: "_blank"}.".html_safe
+        ="(#{link_to("Sign Out", destroy_user_session_path, method: :delete)})".html_safe if @user == current_user

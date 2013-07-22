@@ -16,6 +16,14 @@ class Instance < ActiveRecord::Base
     all.empty? ? nil : where(time_until: nil).order("time_when DESC").first
   end
   
+  def self.recent
+    all.order('time_when DESC').where('time_when >= :x', { x: 1.week.ago })
+  end
+  
+  def time_spent
+    time_until - time_when
+  end
+  
   def self.time_spent
     @time = 0
     if !all.nil?

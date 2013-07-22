@@ -7,9 +7,10 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @user = User.find_by(username: params[:username])
+    @activities = @user.activities
     respond_to do |format|
-      format.html { redirect_to @user }
-      format.json { render json: @user.activities }
+      format.html
+      format.json { render json: @user }
     end
   end
 
