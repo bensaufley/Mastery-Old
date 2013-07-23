@@ -1,0 +1,6 @@
+- content_for :title, "New Activity"
+- content_for :subnav do
+  = link_to 'Back', user_path(@user)
+
+= render 'form', user: @user, activity: @activity
+

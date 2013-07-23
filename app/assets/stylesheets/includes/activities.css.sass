@@ -23,6 +23,9 @@ label[for="activity_tracking_type"], label[for="activity_private"]
   font-size: 1.2em
   line-height: 1em
   @include border-radius(100%)
+  @media screen and (max-width: 640px)
+    width: 200px
+    height: 200px
 
 #counter
   max-width: 280px
@@ -49,16 +52,23 @@ ul.activities
     background: rgb(250,248,245)
     margin: .3em 0
     @include border-radius(3px)
-    @include clearfix
-    a:link, a:visited
-      text-align: right
-      display: inline-block
-      width: 35%
-      padding: .3em
-      margin: 0
-      border-right: 1px solid rgb(215,213,210)
+    .activity_name
+      display: block
+      width: 100%
+      border-bottom: 1px solid $lightgray
+      padding: 0 0 .375em
+      margin-bottom: .375em
+      text-align: center
+      font-size: 1.2em
       text-transform: uppercase
-      &:hover
-        text-decoration: none
+      a:link, a:visited
+        &:hover
+          text-decoration: none
     &:hover
       background: #fff
+    p
+      span
+        width: 40%
+        float: left
+        padding-right: .45em
+        text-align: right

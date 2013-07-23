@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @user = User.find_by(username: params[:username])
-    @activities = @user.activities
+    @activities = @user.activities.sort_by(&:name)
     respond_to do |format|
       format.html
       format.json { render json: @user }

@@ -9,11 +9,7 @@ class UsersController < ApplicationController
     if @user.nil?
       redirect_to '/'
     else
-      if @user == current_user
-        redirect_to '/'
-      else
-        @activities = @user.activities
-      end
+      @activities = @user.activities
     end
   end
 end

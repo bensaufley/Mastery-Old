@@ -8,8 +8,4 @@
       %li="No recent activity."
     - else
       - @user.instances.recent.each do |instance|
-        %li{ title: instance.time_when.strftime('%m.%d.%y %l:%M%P') }
-          %span.when="#{distance_of_time_in_words_to_now(instance.time_when)} ago:"
-          %strong.name= instance.activity.name
-          - if instance.time_until
-            %span.length= "for #{humanize(instance.time_spent)}"
+        = render partial: '/instances/listitem', locals: { instance: instance }

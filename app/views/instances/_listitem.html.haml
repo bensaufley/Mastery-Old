@@ -1,0 +1,8 @@
+%li
+  =link_to instance.activity.user.username, instance.activity.user, class: 'user'
+  %strong.activity_name=link_to instance.activity.name,[instance.activity.user,instance.activity]
+  - if instance.activity.tracking_type=="Timed"
+    %span.instance_length="for " + humanize_short(instance.time_spent)
+  %span.instance_when{ title: instance.time_when.strftime('%m.%d.%Y %l:%M%P') }=distance_of_time_in_words_to_now(instance.time_when) + " ago"
+  - if instance.deletable? && current_user == instance.activity.user
+    = button_to "x", [instance.activity.user,instance.activity,instance], method: :delete, confirm: "Are you sure you wish to delete this instance?", class: 'btn icon cancel'

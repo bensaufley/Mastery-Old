@@ -20,6 +20,10 @@ class Instance < ActiveRecord::Base
     all.order('time_when DESC').where('time_when >= :x', { x: 1.week.ago })
   end
   
+  def deletable?
+    activity.tracking_type!='Timed' || !time_until.nil?
+  end
+  
   def time_spent
     time_until - time_when
   end

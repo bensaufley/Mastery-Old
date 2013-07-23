@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     super(conditions)
   end
   
+  def feed
+    instances.all(limit: 30)
+  end
+  
   private
   def username_downcase
     self.username.downcase! if self.username

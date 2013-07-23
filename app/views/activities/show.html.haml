@@ -29,16 +29,6 @@
           %p{ class: "times month" }="#{pluralize(@activity.instances.times('in_last_month').count, 'time')} in the last month."
           %p{ class: "times year" }="#{pluralize(@activity.instances.times('in_last_year').count, 'time')} in the last year."
           %p.times="#{pluralize(@activity.instances.count,"time")}  all-time."
-    %ul.instances
+    %ul.instances.user
       - @activity.instances.order('time_when DESC').each do |instance|
-        %li
-          %div
-            %span= instance.time_when.strftime('%A, %B %e at %l:%M%P')
-            - if @activity.tracking_type=='Timed'
-              %strong
-                - if instance.time_until.nil?
-                  (ongoing)
-                - else
-                  =humanize_short((instance.time_until || Time.now) - instance.time_when)
-            - if @activity.tracking_type!='Timed' || !instance.time_until.nil?
-              = button_to "x", [@user,@activity,instance], method: :delete, confirm: "Are you sure you wish to delete this instance?", class: 'btn icon cancel'
+        = render partial: '/instances/listitem', locals: { instance: instance }
