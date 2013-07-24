@@ -20,7 +20,7 @@
       - if @activity.tracking_type == 'Timed'
         %h2="Total time spent"
         %div
-          %p.timespent= (@towords = humanize(@activity.instances.time_spent)) == "" ? "None yet" : @towords
+          %p.timespent= (@to_words = humanize(@activity.instances.time_spent)) == "" ? "None yet" : @to_words
       - else
         %h2="Times completed:"
         %div
