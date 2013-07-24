@@ -1,0 +1,34 @@
+- content_for :title, "#{@activity.tracking_type.titleize} Activity: #{@activity.name}"
+- content_for :subhead, @activity.private ? "(Private)" : "(Public)"
+- content_for :subnav do
+  = link_to 'Edit', edit_user_activity_path(@user,@activity)
+  = link_to 'Back', user_activities_path(@user)
+
+%section.activity
+  - if @activity.tracking_type == 'Timed'
+    - if !@activity.instances.running?
+      = render partial: '/instances/start_timed_instance_form', locals: { user: @user, activity: @activity, instance: @activity.instances.new }
+    - else
+      %div{ id: "counter", "data-when" => "#{@activity.instances.running.time_when.to_i * 1000}" }
+        = humanize_short(Time.now - @activity.instances.running.time_when)
+      = render partial: '/instances/stop_timed_instance_form', locals: { user: @user, activity: @activity, instance: @activity.instances.running }
+  - else
+    = render partial: '/instances/count_instance_form', locals: { user: @user, activity: @activity, instance: @activity.instances.new }
+
+  %section.instances
+    %header
+      - if @activity.tracking_type == 'Timed'
+        %h2="Total time spent"
+        %div
+          %p.timespent= (@towords = humanize(@activity.instances.time_spent)) == "" ? "None yet" : @towords
+      - else
+        %h2="Times completed:"
+        %div
+          %p{ class: "times today" }="#{pluralize(@activity.instances.times('today').count, 'time')} today."
+          %p{ class: "times week" }="#{pluralize(@activity.instances.times('in_last_week').count, 'time')} in the last week."
+          %p{ class: "times month" }="#{pluralize(@activity.instances.times('in_last_month').count, 'time')} in the last month."
+          %p{ class: "times year" }="#{pluralize(@activity.instances.times('in_last_year').count, 'time')} in the last year."
+          %p.times="#{pluralize(@activity.instances.count,"time")}  all-time."
+    %ul.instances.user
+      - @activity.instances.order('time_when DESC').each do |instance|
+        = render partial: '/instances/listitem', locals: { instance: instance }

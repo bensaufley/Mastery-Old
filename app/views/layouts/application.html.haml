@@ -1,0 +1,44 @@
+!!! 5
+%html
+  %head
+  %title
+    Mastery
+    = (' | ' + yield(:title)) if content_for? :title
+  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+  = javascript_include_tag "application", "data-turbolinks-track" => true
+  = favicon_link_tag
+  = favicon_link_tag('icons/mastery-icons-04.png',                   rel: 'apple-touch-icon-precomposed', type: 'image/png')
+  = favicon_link_tag('icons/mastery-icons-03.png',   sizes: "72x72", rel: 'apple-touch-icon-precomposed', type: 'image/png')
+  = favicon_link_tag('icons/mastery-icons-02.png', sizes: "114x114", rel: 'apple-touch-icon-precomposed', type: 'image/png')
+  = favicon_link_tag('icons/mastery-icons-09.png', sizes: "144x144", rel: 'apple-touch-icon-precomposed', type: 'image/png')
+  = csrf_meta_tags
+  %meta{ name: "apple-mobile-web-app-title", content: "mastery" }
+  %meta{ name: "apple-mobile-web-app-capable", content: "yes" }
+  %meta{ name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" }
+  %meta{ name: "viewport", content:"initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" }
+  %body
+    %nav#user_nav
+      - if user_signed_in?
+        = link_to "H", root_url, class: 'icon mainnav'
+        = link_to "Activities", user_activities_path(current_user), class: 'mainnav'
+        = yield(:subnav) if content_for? :subnav
+        %strong= link_to current_user.username, current_user, id: 'user'
+        = link_to "&#x2731;".html_safe, edit_user_registration_path, class: 'settings icon', title: 'Edit Settings'
+      - else
+        = yield(:subnav) if content_for? :subnav
+        = link_to "Sign Up", new_user_registration_path, id: "signup"
+        = link_to "Sign In", new_user_session_path, id: "signin"
+        -#= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+        -#= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+    %header
+      %h1= link_to "Mastery", "/"
+      = content_tag(:h2, yield(:title)) if content_for? :title
+      = content_tag(:h3, yield(:subhead)) if content_for? :subhead
+    %main
+      = content_tag(:p, notice, class: 'notice') if notice
+      = content_tag(:p, alert, class: 'alert') if alert
+      = yield
+    %footer
+      %p.copyright
+        ="Copyright &copy;#{Time.now.year} #{link_to "Ben Saufley", "http://bensaufley.com", target: "_blank"}.".html_safe
+        ="(#{link_to("Sign Out", destroy_user_session_path, method: :delete)})".html_safe

@@ -1,0 +1,6 @@
+- content_for :title, "Activity Feed"
+
+%section.feed
+  %ul.instances
+    - @feed.each do |instance|
+      = render partial: '/instances/listitem', locals: { instance: instance }

@@ -75,6 +75,8 @@ body
   background: $background
   padding: 4.8em 0
   position: relative
+  @media screen and (max-width: 640px)
+    padding-top: 3.64em
   & > nav, & > header, & > main
     font-size: 1.6em
     line-height: 1.3em
@@ -83,7 +85,7 @@ body
       font-size: 1.4em
   & > nav
     text-align: right
-    padding: .85em 15px
+    padding: 0
     background: rgb(235,233,230)
     border-bottom: 1px solid rgb(195,193,190)
     position: fixed
@@ -92,23 +94,58 @@ body
     left: 0
     width: 100%
     @include box-shadow(0 6px 15px rgba(0,0,0,.1))
+    html.standalone &
+      border-top: 20px solid rgb(235,233,230)
+    a:link, a:visited
+      &, &.icon
+        font-size: 1em
+        line-height: 1.3em
+        text-decoration: none
+        padding: .85em
+        width: auto
+        border-right: 1px solid rgb(195,193,190)
+        float: left
+        margin: 0
+        display: inline-block !important
+        &:hover
+          text-decoration: none
+          background-color: lighten(rgb(235,233,230),4%)
+        &:active
+          background-color: desaturate(darken(rgb(235,233,230),6%),10%)
+        //&#user
+          &:hover
+            text-decoration: none
+            &:before
+              content: '\48\00A0'
+              font-family: 'icons'
+        &.icon
+        &#user, &#signin, &#signout, &.settings.icon
+          float: none
+        &#signin
+          margin: .35em
+        &:last-child
+          border-right: none
     @media screen and (max-width: 640px)
-      padding: .65em 0 .65em 5px
       .btn, #signin, #signout
         border-width: 0 0 0 1px
         @include border-radius(0)
-    nav.subnav
-      float: left
-      text-transform: uppercase
-      font-size: .875em
+      a:link, a:visited
+        &, &.icon
+          padding: .65em
+          &#signin
+            margin: 0
   & > header
     text-align: center
     padding: 15px 0
     @media screen and (max-width: 640px)
-      padding: 10px
+      padding: 0 10px 10px
+    html.standalone &
+      margin-top: 20px
     h1
       width: 300px
       margin: 0 auto .4em
+      @media screen and (max-width: 480px)
+        width: 160px
       a:link, a:visited
         width: 100%
         height: 0
@@ -162,6 +199,23 @@ body
           -moz-transform-origin: 0 0
           transform-origin: 1px 0
           @include box-shadow(0 0 2px #fff)
+        @media screen and (max-width: 480px)
+          #e_anim
+            width: 21.33333333px
+            height: 21.33333333px
+            top: 7.466666667px
+            left: 96px
+            background-size: contain
+          #m_anim
+            width: 1.066666667px
+            height: 10.66666667px
+            top: 18.13333333px
+            left: 106.1333333px
+          #s_anim
+            width: 0.533333333px
+            height: 10.66666667px
+            top: 18.13333333px
+            left: 106.6666667px
   & > main
     max-width: 640px
     margin: 0 auto
@@ -180,13 +234,16 @@ body
     color: #fff
     border-top: 1px solid rgb(95,93,90)
     background: rgb(145,143,140)
-    a:link, a:visited
-      color: #fff
-      text-decoration: underline
-      &:hover
+    .copyright
+      a:link, a:visited
         color: #fff
-        text-decoration: none
-  
+        text-decoration: underline
+        &:hover
+          color: #fff
+          text-decoration: none
+    .copyright
+      margin: 0
+      padding: 0
 
 // Forms
 

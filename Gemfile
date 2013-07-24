@@ -18,6 +18,8 @@ gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'compass-rails', git: "git://github.com/milgner/compass-rails.git", branch: "rails4"
 gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'haml'
+gem 'rdiscount' # Markdown
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

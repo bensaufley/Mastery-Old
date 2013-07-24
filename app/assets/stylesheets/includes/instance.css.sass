@@ -32,36 +32,53 @@ section.activity
 
 ul.instances
   li
-    font-size: 1.2em
-    line-height: 1.3em
+    position: relative
+    padding: 0 2.95em 0 .45em
+    cursor: default
+    border: 1px solid transparent
+    display: block
     background: rgb(250,248,245)
-    margin: .3em 0
     @include border-radius(3px)
-    @include clearfix
     &:hover
       background: #fff
-    div
-      display: table
-      width: 100%
-      margin: 0
-      span, strong, form
-        display: table-cell
-        vertical-align: middle
-      span
-        padding: .35em
-      strong
-        text-align: right
-        padding: .35em
-      form
-        width: 2.5em
-        padding-top: 0 !important
-        text-align: center
-      .btn
-        width: 2.5em
-        margin: 0
-        text-transform: none
-    @media screen and (max-width: 480px)
+    .user, .activity_name, .instance_length
+      float: left
+      padding: .45em .4em 0 0
+    .user
+      width: 25%
+      text-align: right
+    .instance_length
+      color: $darkgray
+    .instance_when
+      font-size: .8em
+      clear: both
+      display: block
+      line-height: 1.2em
+      margin-left: 25%
+      color: $medgray
+      padding-bottom: 0.5625em
+    form
+      position: absolute
+      top: 50%
+      right: 0
+      margin: -1.25em .45em 0 0
+    .btn
       font-size: 1em
-      div
-        .btn
-          @include border-radius(100%)
+      width: 2.5em
+      text-transform: none
+      display: none
+      @include opacity(.2)
+    &:hover
+      .btn
+        display: block
+        @include opacity(1)
+    html.touch &
+      .btn
+        display: block
+        @include border-radius(100%)
+  &.user
+    li
+      .user
+        display: none
+      .instance_when
+        margin-left: 0

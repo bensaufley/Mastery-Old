@@ -16,6 +16,18 @@ class Instance < ActiveRecord::Base
     all.empty? ? nil : where(time_until: nil).order("time_when DESC").first
   end
   
+  def self.recent
+    all.order('time_when DESC').where('time_when >= :x', { x: 1.week.ago })
+  end
+  
+  def deletable?
+    activity.tracking_type!='Timed' || !time_until.nil?
+  end
+  
+  def time_spent
+    time_until - time_when
+  end
+  
   def self.time_spent
     @time = 0
     if !all.nil?
@@ -32,7 +44,7 @@ class Instance < ActiveRecord::Base
   def self.times(range = 'all')
     case range
       when 'today'
-        where('CONVERT(time_when,date) = :x', { x: Time.now.to_date })
+        where('time_when >= :x AND time_when < :y', { x: Time.now.to_date.to_time, y: (Time.now.to_date + 1.day).to_time })
       when 'in_last_week'
         where('time_when >= :x', { x: 1.week.ago })
       when 'in_last_month'

@@ -1,0 +1,11 @@
+- content_for :title, "#{@user.username}: Profile"
+
+%section.feed
+  %header
+    %h1="#{@user.username}’s recent activity"
+  %ul.instances
+    - if @user.instances.recent.empty?
+      %li="No recent activity."
+    - else
+      - @user.instances.recent.each do |instance|
+        = render partial: '/instances/listitem', locals: { instance: instance }

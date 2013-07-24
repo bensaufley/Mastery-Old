@@ -1,0 +1,10 @@
+%li
+  %strong.activity_name= link_to activity.name, user_activity_path(current_user,activity)
+  - if activity.tracking_type=='Timed'
+    %p
+      %span="Time spent:"
+      = humanize(activity.instances.time_spent)
+  - else
+    %p
+      %span="Times completed:"
+      = pluralize(activity.instances.count, "time")
